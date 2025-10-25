@@ -1,6 +1,6 @@
 {
   "name": "input-integer-ui",
-  "version": "0.0.0",
+  "version": "0.0.5",
   "description": "ui component",
   "keywords": [
     "slider"
