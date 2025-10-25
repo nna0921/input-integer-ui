@@ -3,11 +3,24 @@ module.exports = inputInteger
 const sheet = new CSSStyleSheet()
 const theme=get_theme()
 sheet.replaceSync(theme)
-
-function inputInteger (opts)
+var id=0
+function inputInteger (opts, protocol)
 {
     const {min = 0,max = 1000} = opts
-    const el= document.createElement('div')
+    const name = `input-integer-${id++}`
+    
+    const notify = protocol({from: name},listen)
+     function listen(message)
+    {
+        const {type,data}=message
+        if(type === "update")
+        {
+            input.value=data
+        }
+
+    }
+
+    const el = document.createElement('div')
     const shadow = el.attachShadow({mode: 'closed'})
     const input= document.createElement('input')
     input.type='number'
@@ -20,6 +33,23 @@ function inputInteger (opts)
    
     shadow.adoptedStyleSheets = [sheet]
     return el
+    //handlers
+    function handle_onkeyup(e, input, min, max)
+    {
+        const val= Number(e.target.value)
+        const val_len=val.toString().length
+        const min_len=min.toString().length
+        if(val>max)input.value=max
+        else if (val_len ==min_len && val<min) input.value=min
+        
+        notify({from:name ,type:'update',data:val})
+    }
+
+    function handle_onmouseleave_and_blur(e, input, min)
+    {
+        const val= Number(e.target.value)
+        if(val<min)input.value=''
+    }
 }
 
 function get_theme()
@@ -66,19 +96,3 @@ function get_theme()
         }
     `
 }
-
-function handle_onkeyup(e, input, min, max)
-{
-    const val= Number(e.target.value)
-    const val_len=val.toString().length
-    const min_len=min.toString().length
-    if(val>max)input.value=max
-    else if (val_len ==min_len && val<min) input.value=''
-}
-
-function handle_onmouseleave_and_blur(e, input, min)
-{
-    const val= Number(e.target.value)
-     if(val<min)input.value=''
-}
-
