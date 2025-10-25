@@ -6,7 +6,7 @@ sheet.replaceSync(theme)
 
 function inputInteger (opts)
 {
-    const {min,max}=opts
+    const {min = 0,max = 1000} = opts
     const el= document.createElement('div')
     const shadow = el.attachShadow({mode: 'closed'})
     const input= document.createElement('input')

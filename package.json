@@ -25,5 +25,8 @@
   "devDependencies": {
     "browserify": "^17.0.1",
     "budo": "^11.8.4"
+  },
+  "dependencies": {
+    "input-integer-ui-anna": "^0.0.5"
   }
 }
