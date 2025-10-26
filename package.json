@@ -20,11 +20,25 @@
   "scripts": {
     "start": "budo demo/demo.js:bundle.js --live --open",
     "build": "browserify demo/demo.js > bundle.js",
+    "lint": "standardx src demo",
+    "lint:fix": "standardx --fix src demo",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "standardx": {
+    "env": [
+      "browser"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "rules": {
+      "camelcase": "off"
+    }
   },
   "devDependencies": {
     "browserify": "^17.0.1",
-    "budo": "^11.8.4"
+    "budo": "^11.8.4",
+    "standardx": "^7.0.0"
   },
   "dependencies": {
     "input-integer-ui-anna": "^0.0.5"

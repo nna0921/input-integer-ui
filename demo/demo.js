@@ -1,12 +1,12 @@
 const inputInteger = require('input-integer-ui-anna')
-const opt1={min:1,max:150}
-const opt2={min:1872,max:2022}
-const input1= inputInteger(opt1)
-const input2= inputInteger(opt2)
-const title= 'My demo form'
-const subtitle= 'Please fill out the form'
+const opt1 = { min: 1, max: 150 }
+const opt2 = { min: 1872, max: 2022 }
+const input1 = inputInteger(opt1)
+const input2 = inputInteger(opt2)
+const title = 'My demo form'
+const subtitle = 'Please fill out the form'
 const page = document.createElement('div')
-page.innerHTML= `
+page.innerHTML = `
 <h1> ${title} </h1>
 <h2> ${subtitle} </h2>
 <h3>Enter your age</h3>
