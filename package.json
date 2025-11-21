@@ -40,7 +40,5 @@
     "budo": "^11.8.4",
     "standardx": "^7.0.0"
   },
-  "dependencies": {
-    "input-integer-ui-anna": "^0.0.5"
-  }
+  "dependencies": {}
 }
